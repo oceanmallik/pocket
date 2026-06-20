@@ -1,0 +1,9 @@
+# Ignore everything
+*
+# Do not ignore folders
+!*/
+#Do not ignore file list
+!*.gitignore
+!*README.md
+!*.c
+!*.cpp
