@@ -1,2 +1,1 @@
-# pocket
-A private pocket for easy to access notes
+# A repository that holds great resources
