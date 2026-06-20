@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500&family=Inter:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:      #0B0B10;  /* base black */
+    --panel:     #17171E;  /* raised surface */
+    --gold:      #C9A961;  /* foil accent — light, type, CTA */
+    --curtain:   #5C1620;  /* deep theatre-red wash, used sparingly */
+    --ghost:     #E9E6DF;  /* warm off-white text */
+    --mist:      #6B6A72;  /* muted text */
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{ width:100%; min-height:100vh; background:var(--void); }
+
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ghost);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 24px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* film grain texture, fixed, very low opacity */
+  .grain{
+    position:fixed; inset:0;
+    pointer-events:none;
+    opacity:.05;
+    mix-blend-mode:overlay;
+    z-index:5;
+  }
+
+  /* deep vignette so the light shaft reads as the only source */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:radial-gradient(ellipse 70% 55% at 50% 30%, rgba(255,255,255,0.05), transparent 60%),
+               radial-gradient(ellipse 120% 90% at 50% 110%, rgba(0,0,0,0.7), transparent 60%);
+    pointer-events:none;
+  }
+
+  /* faint curtain-red wash at the very edges only */
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    background:linear-gradient(90deg, rgba(92,22,32,0.35), transparent 18%, transparent 82%, rgba(92,22,32,0.35));
+    pointer-events:none;
+  }
+
+  .stage{
+    position:relative;
+    width:100%;
+    max-width:540px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    z-index:2;
+  }
+
+  /* ---------- light shaft ---------- */
+  .shaft{
+    position:absolute;
+    top:-220px;
+    left:50%;
+    width:340px;
+    height:340px;
+    transform:translateX(-50%);
+    background:conic-gradient(from 180deg at 50% 0%, transparent 38%, rgba(201,169,97,0.16) 50%, transparent 62%);
+    filter:blur(2px);
+    opacity:0;
+    animation:shaftIn 1.6s ease-out .2s forwards;
+    pointer-events:none;
+  }
+
+  /* ---------- eyebrow ---------- */
+  .eyebrow{
+    font-family:'Special Elite', monospace;
+    font-size:11.5px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--mist);
+    opacity:0;
+    animation:fadeUp .8s ease-out .3s forwards;
+    margin-bottom:26px;
+  }
+  .eyebrow b{ color:var(--gold); font-weight:400; }
+
+  /* ---------- headline with curtain-slat reveal ---------- */
+  .headline-wrap{
+    position:relative;
+    margin-bottom:30px;
+  }
+
+  .headline{
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(48px, 11vw, 84px);
+    line-height:.96;
+    letter-spacing:.01em;
+    color:var(--ghost);
+    position:relative;
+  }
+
+  .headline .accent{ color:var(--gold); font-style:normal; }
+
+  .slats{
+    position:absolute;
+    inset:-6px -10px;
+    display:flex;
+    flex-direction:column;
+    z-index:3;
+  }
+  .slat{
+    flex:1;
+    background:var(--void);
+  }
+  .slat:nth-child(1){ animation:slatUp .65s cubic-bezier(.76,0,.24,1) 1.0s forwards; }
+  .slat:nth-child(2){ animation:slatUp .65s cubic-bezier(.76,0,.24,1) 1.08s forwards; }
+  .slat:nth-child(3){ animation:slatUp .65s cubic-bezier(.76,0,.24,1) 1.16s forwards; }
+  .slat:nth-child(4){ animation:slatDown .65s cubic-bezier(.76,0,.24,1) 1.08s forwards; }
+  .slat:nth-child(5){ animation:slatDown .65s cubic-bezier(.76,0,.24,1) 1.16s forwards; }
+  .slat:nth-child(6){ animation:slatDown .65s cubic-bezier(.76,0,.24,1) 1.24s forwards; }
+
+  .tagline{
+    font-size:14.5px;
+    color:var(--mist);
+    max-width:300px;
+    line-height:1.6;
+    opacity:0;
+    animation:fadeUp .8s ease-out 1.7s forwards;
+    margin-bottom:42px;
+  }
+
+  /* ---------- access form ---------- */
+  .access{
+    width:100%;
+    max-width:380px;
+    opacity:0;
+    animation:fadeUp .8s ease-out 1.9s forwards;
+  }
+
+  .access form{
+    display:flex;
+    gap:8px;
+    border-bottom:1px solid rgba(233,230,223,0.18);
+    padding-bottom:10px;
+  }
+
+  .access input{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:var(--ghost);
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    letter-spacing:.02em;
+    padding:6px 4px;
+  }
+  .access input::placeholder{ color:rgba(233,230,223,0.32); }
+
+  .access button{
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:11.5px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    padding:6px 4px;
+    position:relative;
+    transition:opacity .2s ease;
+    white-space:nowrap;
+  }
+  .access button::after{
+    content:"→";
+    margin-left:6px;
+    display:inline-block;
+    transition:transform .2s ease;
+  }
+  .access button:hover::after{ transform:translateX(3px); }
+  .access button:hover{ opacity:.75; }
+  .access input:focus-visible, .access button:focus-visible{
+    outline:1px solid var(--gold);
+    outline-offset:4px;
+  }
+
+  .note{
+    font-family:'Special Elite', monospace;
+    font-size:11px;
+    letter-spacing:.04em;
+    color:var(--mist);
+    margin-top:14px;
+    min-height:14px;
+  }
+  .note.show{ color:var(--gold); }
+
+  /* ---------- keyframes ---------- */
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes shaftIn{ from{opacity:0;} to{opacity:1;} }
+  @keyframes slatUp{ to{ transform:translateY(-100%); } }
+  @keyframes slatDown{ to{ transform:translateY(100%); } }
+
+  @media (max-width:480px){
+    .access form{ flex-direction:column; align-items:stretch; gap:10px; border-bottom:none; }
+    .access button{ align-self:flex-end; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+    .slat{ transform:translateY(-100%) !important; opacity:0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="grain" width="100%" height="100%">
+  <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#noise)"/>
+</svg>
+
+  <div class="stage">
+    <div class="shaft"></div>
+
+    <div class="eyebrow">Limited <b>Reveal</b> · General Release Pending</div>
+
+    <div class="headline-wrap">
+      <h1 class="headline">Coming<br><span class="accent">Soon</span></h1>
+      <div class="slats">
+        <div class="slat"></div><div class="slat"></div><div class="slat"></div>
+        <div class="slat"></div><div class="slat"></div><div class="slat"></div>
+      </div>
+    </div>
+
+    <p class="tagline">Something is being prepared. </p>
+
+    <div class="access">
+      <div class="note" id="noteText">no spoilers. just one message, on the night.</div>
+    </div>
+  </div>
+
+<script>
+  // access form
+  const form = document.getElementById('accessForm');
+  const note = document.getElementById('noteText');
+  const input = document.getElementById('emailInput');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!input.value) return;
+    note.textContent = "you're on the list. say nothing.";
+    note.classList.add('show');
+    input.value = '';
+    input.disabled = true;
+    form.querySelector('button').style.opacity = '.5';
+    form.querySelector('button').style.pointerEvents = 'none';
+  });
+</script>
+
+</body>
+</html>
