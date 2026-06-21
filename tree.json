@@ -10,6 +10,11 @@
       },
       {
         "type": "file",
+        "name": "linkedListDelete.c",
+        "path": "C/linkedListDelete.c"
+      },
+      {
+        "type": "file",
         "name": "linkedListInsert.c",
         "path": "C/linkedListInsert.c"
       }
