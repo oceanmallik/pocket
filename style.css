@@ -1,0 +1,174 @@
+:root {
+    --bg-app: #f4f5f5; 
+    --sidebar-bg: rgba(236, 236, 236, 0.6);
+    --sidebar-border: #d1d1d1;
+    --text-main: #1d1d1f;
+    --text-secondary: #86868b;
+    --accent: #0066cc;
+    --hover-bg: rgba(0, 0, 0, 0.05);
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Sidebar --- */
+#sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid var(--sidebar-border);
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar h3 {
+    padding: 20px 20px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+#file-tree {
+    padding: 0 10px 10px 10px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* --- Tree Navigation --- */
+.folder, .file {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    transition: background-color 0.1s ease;
+    user-select: none;
+}
+
+.folder {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.file {
+    margin-left: 15px;
+    color: #444;
+    text-decoration: none;
+}
+
+.folder:hover, .file:hover {
+    background-color: var(--hover-bg);
+}
+
+/* --- Main Content Area --- */
+#content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-top-left-radius: 10px;
+    margin-top: 10px;
+    box-shadow: -2px -2px 10px rgba(0,0,0,0.03);
+    overflow: hidden;
+}
+
+#file-title {
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid var(--sidebar-border);
+    color: var(--text-main);
+    background-color: #ffffff;
+    border-top-left-radius: 10px;
+}
+
+.code-container {
+    padding: 30px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+/* --- Decorative Window Shell for Code --- */
+.decor-window {
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.decor-header {
+    height: 32px;
+    background: #2d2d2d;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    gap: 8px;
+}
+
+.decor-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.decor-dot.close { background-color: #ff5f56; }
+.decor-dot.minimize { background-color: #ffbd2e; }
+.decor-dot.maximize { background-color: #27c93f; }
+
+pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar { 
+    width: 10px; 
+    height: 10px; 
+}
+::-webkit-scrollbar-track { 
+    background: transparent; 
+}
+::-webkit-scrollbar-thumb { 
+    background: rgba(0,0,0,0.15); 
+    border-radius: 10px; 
+    border: 2px solid transparent; 
+    background-clip: padding-box; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: rgba(0,0,0,0.3); 
+}
