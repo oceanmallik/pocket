@@ -172,3 +172,8 @@ code {
 ::-webkit-scrollbar-thumb:hover { 
     background: rgba(0,0,0,0.3); 
 }
+
+.hljs {
+    background: transparent !important;
+    padding: 0 !important;
+}
