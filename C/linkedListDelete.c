@@ -37,5 +37,15 @@ int main()
     printLL(head);
     printf("\n");
 
-    
+    struct node *newNode = NULL;
+    newNode = malloc(sizeof(struct node));
+    newNode -> value = 40;
+
+    newNode -> next = three; // newNode, three
+    one -> next = newNode; // one, newNode
+    // one, newNode, three
+    free(two); // free memory two
+
+    printLL(head);
+    printf("\n");
 }
