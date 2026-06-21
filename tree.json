@@ -5,8 +5,8 @@
     "children": [
       {
         "type": "file",
-        "name": "linkedList.c",
-        "path": "C/linkedList.c"
+        "name": "linkedListBase.c",
+        "path": "C/linkedListBase.c"
       }
     ]
   }
