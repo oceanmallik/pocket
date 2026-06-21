@@ -3,7 +3,7 @@ name: Generate Code Directory JSON
 on:
   push:
     branches:
-      - main # Change this to 'master' if your default branch is master
+      - seed # Change this to 'master' if your default branch is master
 
 jobs:
   build-and-commit:
