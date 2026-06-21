@@ -1,11 +1,11 @@
 :root {
-    --bg-app: #f4f5f5;
-    --sidebar-bg: rgba(236, 236, 236, 0.6);
-    --sidebar-border: #d1d1d1;
-    --text-main: #1d1d1f;
-    --text-secondary: #86868b;
-    --accent: #0066cc;
-    --hover-bg: rgba(0, 0, 0, 0.05);
+    --bg-app: #010409;
+    --sidebar-bg: rgba(13, 17, 23, 0.8);
+    --sidebar-border: #30363d;
+    --text-main: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --hover-bg: rgba(255, 255, 255, 0.08);
     --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-mono: "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
 }
@@ -75,24 +75,26 @@ body {
 
 .file {
     margin-left: 15px;
-    color: #444;
+    color: var(--text-secondary); /* Uses the light grey variable */
     text-decoration: none;
+    transition: color 0.2s ease; /* Smooth transition for hover */
 }
 
 .folder:hover,
 .file:hover {
-    background-color: var(--hover-bg);
+    color: var(--accent);
 }
-
 /* --- Main Content Area --- */
 #content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: var(--bg-app);
+    /* Changed from #ffffff */
     border-top-left-radius: 10px;
     margin-top: 10px;
-    box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.03);
+    box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.5);
+    /* Made shadow darker */
     overflow: hidden;
 }
 
@@ -103,7 +105,8 @@ body {
     text-align: center;
     border-bottom: 1px solid var(--sidebar-border);
     color: var(--text-main);
-    background-color: #ffffff;
+    background-color: transparent;
+    /* Changed from #ffffff */
     border-top-left-radius: 10px;
 }
 
@@ -111,7 +114,8 @@ body {
     padding: 30px;
     flex-grow: 1;
     overflow-y: auto;
-    background-color: #ffffff;
+    background-color: transparent;
+    /* Changed from #ffffff */
 }
 
 /* --- Decorative Window Shell for Code --- */
@@ -241,12 +245,13 @@ code {
     #sidebar {
         position: fixed;
         left: -280px;
-        /* Hide it off-screen to the left */
         top: 0;
         bottom: 0;
         z-index: 1000;
+        background-color: #0d1117;
+        /* Solid dark background for mobile drawer */
         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
+        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.8);
     }
 
     /* When this class is added via JS, the sidebar slides in */
