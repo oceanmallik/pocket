@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket</title>
-    <style>
-        body { font-family: system-ui, sans-serif; display: flex; }
-        #sidebar { width: 250px; border-right: 1px solid #ccc; padding: 10px; height: 100vh; overflow-y: auto; }
-        #content { flex-grow: 1; padding: 20px; }
-        .folder { font-weight: bold; margin-top: 10px; cursor: pointer; }
-        .file { margin-left: 15px; color: blue; cursor: pointer; text-decoration: underline; }
-        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div id="sidebar">
@@ -22,7 +17,16 @@
 
     <div id="content">
         <h2 id="file-title">Select a file</h2>
-        <pre><code id="file-display">Code will appear here...</code></pre>
+        <div class="code-container">
+            <div class="decor-window">
+                <div class="decor-header">
+                    <div class="decor-dot close"></div>
+                    <div class="decor-dot minimize"></div>
+                    <div class="decor-dot maximize"></div>
+                </div>
+                <pre><code id="file-display">Code will appear here...</code></pre>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -63,4 +67,5 @@
         loadTree();
     </script>
 </body>
+
 </html>
