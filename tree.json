@@ -7,6 +7,11 @@
         "type": "file",
         "name": "linkedListBase.c",
         "path": "C/linkedListBase.c"
+      },
+      {
+        "type": "file",
+        "name": "linkedListInsert.c",
+        "path": "C/linkedListInsert.c"
       }
     ]
   }
