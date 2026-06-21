@@ -1,0 +1,13 @@
+[
+  {
+    "type": "folder",
+    "name": "C",
+    "children": [
+      {
+        "type": "file",
+        "name": "linkedList.c",
+        "path": "C/linkedList.c"
+      }
+    ]
+  }
+]
