@@ -18,6 +18,7 @@
     </div>
 
     <div id="content">
+        <button id="mobile-menu-btn">☰ Browse Files</button>
         <h2 id="file-title">Select a file</h2>
         <div class="code-container">
             <div class="decor-window">
@@ -47,7 +48,7 @@
                     div.className = 'folder';
                     div.textContent = '📁 ' + node.name;
                     const childrenContainer = document.createElement('div');
-                    childrenContainer.style.display = 'block'; // Or 'none' to make it collapsible
+                    childrenContainer.style.display = 'block';
                     buildDOMTree(node.children, childrenContainer);
                     div.appendChild(childrenContainer);
                 } else {
@@ -61,16 +62,25 @@
 
         async function loadFile(path, name) {
             document.getElementById('file-title').textContent = name;
+
             const response = await fetch(path);
             const text = await response.text();
+
             const codeDisplay = document.getElementById('file-display');
             codeDisplay.textContent = text;
             codeDisplay.className = '';
             codeDisplay.removeAttribute('data-highlighted');
+
             hljs.highlightElement(codeDisplay);
+
+            document.getElementById('sidebar').classList.remove('open');
         }
 
         loadTree();
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
     </script>
 </body>
 
