@@ -1,0 +1,31 @@
+name: Generate Code Directory JSON
+
+on:
+  push:
+    branches:
+      - main # Change this to 'master' if your default branch is master
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run JSON Generator
+        run: python generate_tree.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add tree.json
+          # Only commit if the JSON file actually changed
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update tree.json" && git push)

@@ -5,6 +5,8 @@
 #Do not ignore file list
 !*.gitignore
 !*README.md
+!*generate_tree.py
+!*update-json.yml
 !*index.html
 !*.c
 !*.cpp
