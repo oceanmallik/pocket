@@ -35,5 +35,7 @@ int main()
 
     head = one;
     printLL(head);
-    print("\n");
+    printf("\n");
+
+    
 }
