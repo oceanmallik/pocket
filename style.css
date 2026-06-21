@@ -177,3 +177,23 @@ code {
     background: transparent !important;
     padding: 0 !important;
 }
+
+.decor-window {
+    background: #0d1117;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.decor-header {
+    height: 32px;
+    background: #161b22;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
