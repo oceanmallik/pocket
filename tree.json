@@ -5,6 +5,11 @@
     "children": [
       {
         "type": "file",
+        "name": "Stack.c",
+        "path": "C/Stack.c"
+      },
+      {
+        "type": "file",
         "name": "linkedListBase.c",
         "path": "C/linkedListBase.c"
       },
