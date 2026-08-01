@@ -17,6 +17,11 @@
         "type": "file",
         "name": "linkedListID.c",
         "path": "C/linkedListID.c"
+      },
+      {
+        "type": "file",
+        "name": "queue.c",
+        "path": "C/queue.c"
       }
     ]
   }
