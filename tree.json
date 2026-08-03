@@ -5,6 +5,11 @@
     "children": [
       {
         "type": "file",
+        "name": "Queue.c",
+        "path": "C/Queue.c"
+      },
+      {
+        "type": "file",
         "name": "Stack.c",
         "path": "C/Stack.c"
       },
@@ -17,11 +22,6 @@
         "type": "file",
         "name": "linkedListID.c",
         "path": "C/linkedListID.c"
-      },
-      {
-        "type": "file",
-        "name": "queue.c",
-        "path": "C/queue.c"
       }
     ]
   }
