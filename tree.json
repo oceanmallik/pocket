@@ -22,6 +22,16 @@
         "type": "file",
         "name": "linkedListID.c",
         "path": "C/linkedListID.c"
+      },
+      {
+        "type": "file",
+        "name": "queue_class.c",
+        "path": "C/queue_class.c"
+      },
+      {
+        "type": "file",
+        "name": "stack_ds_code.c",
+        "path": "C/stack_ds_code.c"
       }
     ]
   }
