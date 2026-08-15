@@ -15,6 +15,21 @@
       },
       {
         "type": "file",
+        "name": "assignmentLinkedList.c",
+        "path": "C/assignmentLinkedList.c"
+      },
+      {
+        "type": "file",
+        "name": "assignmentQueue.c",
+        "path": "C/assignmentQueue.c"
+      },
+      {
+        "type": "file",
+        "name": "assignmentStack.c",
+        "path": "C/assignmentStack.c"
+      },
+      {
+        "type": "file",
         "name": "linkedListBase.c",
         "path": "C/linkedListBase.c"
       },
