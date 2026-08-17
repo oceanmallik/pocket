@@ -5,6 +5,11 @@
     "children": [
       {
         "type": "file",
+        "name": "PQueue.c",
+        "path": "C/PQueue.c"
+      },
+      {
+        "type": "file",
         "name": "Queue.c",
         "path": "C/Queue.c"
       },
