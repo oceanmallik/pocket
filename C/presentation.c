@@ -35,4 +35,11 @@ int main()
     head->next = second;
     second->next = third;
     third->next = head;
+
+    // Deleting the head node
+    ptr = head;
+    head = second;
+    third->next = head;
+    head->flag = 1;
+    free(ptr);
 }
