@@ -5,5 +5,34 @@ struct Node
 {
     int data;
     int flag;
-    struct Node* next;
+    struct Node *next;
 };
+
+int main()
+{
+    // Nodes creation
+    struct Node *head = NULL;
+    struct Node *second = NULL;
+    struct Node *third = NULL;
+    struct Node *ptr = NULL;
+
+    // Allocation memory
+    head = (struct Node *)malloc(sizeof(struct Node));
+    second = (struct Node *)malloc(sizeof(struct Node));
+    third = (struct Node *)malloc(sizeof(struct Node));
+
+    // Assigning data and flags
+    head->data = 10;
+    head->flag = 1;
+
+    second->data = 20;
+    second->flag = 0;
+
+    third->data = 30;
+    third->flag = 0;
+
+    // Making a circle
+    head->next = second;
+    second->next = third;
+    third->next = head;
+}
