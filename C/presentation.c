@@ -36,10 +36,26 @@ int main()
     second->next = third;
     third->next = head;
 
+    printf("Before Deletion:\n");
+    ptr = head;
+    do
+    {
+        printf("Data: %d, Flag: %d\n", ptr->data, ptr->flag);
+        ptr = ptr->next;
+    } while (ptr != head);
+
     // Deleting the head node
     ptr = head;
     head = second;
     third->next = head;
     head->flag = 1;
     free(ptr);
+
+    printf("\nAfter Deletion:\n");
+    ptr = head;
+    do
+    {
+        printf("Data: %d, Flag: %d\n", ptr->data, ptr->flag);
+        ptr = ptr->next;
+    } while (ptr != head);
 }
