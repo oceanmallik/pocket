@@ -30,26 +30,6 @@
       },
       {
         "type": "file",
-        "name": "hasibFinal1.c",
-        "path": "C/hasibFinal1.c"
-      },
-      {
-        "type": "file",
-        "name": "hasibFinal2.c",
-        "path": "C/hasibFinal2.c"
-      },
-      {
-        "type": "file",
-        "name": "hasibFinal3.c",
-        "path": "C/hasibFinal3.c"
-      },
-      {
-        "type": "file",
-        "name": "hasibFinal4.c",
-        "path": "C/hasibFinal4.c"
-      },
-      {
-        "type": "file",
         "name": "linkedListBase.c",
         "path": "C/linkedListBase.c"
       },
